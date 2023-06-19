@@ -46,7 +46,9 @@ android {
     }
 }
 
-
+ext {
+    PACKAGE_VERSION = project.hasProperty('PACKAGE_VERSION')
+}
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.8.0'
