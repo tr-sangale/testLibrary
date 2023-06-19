@@ -1,7 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class LibraryTest {
+public class addTest {
     @Test
     public void testAddNumbers() {
         int result = Library.addNumbers(2, 3);
