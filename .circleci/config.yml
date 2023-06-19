@@ -26,8 +26,11 @@ jobs:
       - run:
           name: Fetch Commit Count
           command: |
-            COMMIT_COUNT=$(git ls-remote https://github.com/tr-sangale/firstAndroidLibrary refs/head/${CIRCLE_BRANCH} | awk '{ print $1 }' | wc -l)
-            echo "Commit Count: ${COMMIT_COUNT}"
+            git remote set-url origin https://github.com/tr-sangale/firstAndroidLibrary
+            git fetch
+            BRANCH_NAME="${CIRCLE_BRANCH}"
+            COMMIT_COUNT=$(git rev-list --count origin/$BRANCH_NAME)
+            echo "Commit Count for branch $BRANCH_NAME: ${COMMIT_COUNT}"
       # - run: 
       #     name: change the permission
       #     command: chmod +x ./gradlew
