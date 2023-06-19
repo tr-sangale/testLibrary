@@ -34,7 +34,7 @@ jobs:
       - run:
           name: settting up package version which needs to download
           command: |
-            PACKAGE_VERSION="NEW-${COMMIT_COUNT}-"${BRANCH_NAME}"
+            PACKAGE_VERSION="NEW-${COMMIT_COUNT}-'${BRANCH_NAME}'"
       - run: 
           name: change the permission
           command: chmod +x ./gradlew
