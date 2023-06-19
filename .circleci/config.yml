@@ -35,6 +35,7 @@ jobs:
           name: settting up package version which needs to download
           command: |
             PACKAGE_VERSION="NEW-${COMMIT_COUNT}-'${BRANCH_NAME}'"
+            echo "pkg to be dfownloaded : ${PACKAGE_VERSION}"
       - run: 
           name: change the permission
           command: chmod +x ./gradlew
