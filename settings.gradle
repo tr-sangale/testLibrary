@@ -14,8 +14,8 @@ dependencyResolutionManagement {
             name = "GithubPackage"
             url = uri('https://maven.pkg.github.com/tr-sangale/firstAndroidLibrary')
             credentials{
-                username="tr-sangale"
-                password="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"
+                username= System.getenv("GITHUB_ACTOR")
+                password= System.getenv("GITHUB_TOKEN")
             }
         }
     }
