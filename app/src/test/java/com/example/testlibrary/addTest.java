@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 public class addTest {
     @Test
     public void testAddNumbers() {
-        int result = Library.addNumbers(2, 3);
+        int result = add.addNumbers(2, 3);
         assertEquals(5, result);
     }
 }
