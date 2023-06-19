@@ -37,6 +37,7 @@ jobs:
           command: |
             PACKAGE_VERSION="NEW-${COMMIT_COUNT}-${CIRCLE_BRANCH}"
             echo "pkg to be dfownloaded : ${PACKAGE_VERSION}"
+            echo "export PACKAGE_VERSION=${PACKAGE_VERSION}" >> $BASH_ENV
       - run: 
           name: change the permission
           command: chmod +x ./gradlew
