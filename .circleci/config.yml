@@ -31,10 +31,11 @@ jobs:
             BRANCH_NAME="${CIRCLE_BRANCH}"
             COMMIT_COUNT=$(git rev-list --count origin/$BRANCH_NAME)
             echo "Commit Count for branch $BRANCH_NAME: ${COMMIT_COUNT}"
+            echo "export COMMIT_COUNT=${COMMIT_COUNT}" >> $BASH_ENV
       - run:
           name: settting up package version which needs to download
           command: |
-            PACKAGE_VERSION="NEW-$COMMIT_COUNT-$BRANCH_NAME"
+            PACKAGE_VERSION="NEW-${COMMIT_COUNT}-${CIRCLE_BRANCH}"
             echo "pkg to be dfownloaded : ${PACKAGE_VERSION}"
       - run: 
           name: change the permission
