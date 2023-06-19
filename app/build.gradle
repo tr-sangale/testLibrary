@@ -46,9 +46,7 @@ android {
     }
 }
 
-ext {
-    PACKAGE_VERSION = project.hasProperty('PACKAGE_VERSION')
-}
+def PACKAGE_VERSION = System.getenv('PACKAGE_VERSION') ?: '0.0.1'
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.8.0'
