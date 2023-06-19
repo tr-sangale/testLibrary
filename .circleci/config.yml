@@ -31,36 +31,40 @@ jobs:
             BRANCH_NAME="${CIRCLE_BRANCH}"
             COMMIT_COUNT=$(git rev-list --count origin/$BRANCH_NAME)
             echo "Commit Count for branch $BRANCH_NAME: ${COMMIT_COUNT}"
-      # - run: 
-      #     name: change the permission
-      #     command: chmod +x ./gradlew
+      - run:
+          name: settting up package version which needs to download
+          command: |
+            PACKAGE_VERSION="NEW-${COMMIT_COUNT}-"${BRANCH_NAME}"
+      - run: 
+          name: change the permission
+          command: chmod +x ./gradlew
 
-      # # # Download and cache dependencies
-      # - restore_cache:
-      #     keys:
-      #       - v1-dependencies-{{ checksum "build.gradle" }}
-      #       # fallback to using the latest cache if no exact match is found
-      #       - v1-dependencies-
-      # - run: 
-      #     name: download gradle dependencies
-      #     command: ./gradlew androidDependencies
+      # # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: 
+          name: download gradle dependencies
+          command: ./gradlew androidDependencies
 
-      # - save_cache:
-      #     paths:
-      #       - ~/.gradle
-      #     key: v1-dependencies-{{ checksum "build.gradle" }}
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
    
 
-      # # build the androidlib
+      # build the androidlib
      
-      # - run: 
-      #     name: build project
-      #     command: ./gradlew build
+      - run: 
+          name: build project
+          command: ./gradlew build
 
-      # # run tests!
-      # - run: 
-      #     name: gradle unit tests
-      #     command: ./gradlew test
+      # run tests!
+      - run: 
+          name: gradle unit tests
+          command: ./gradlew test
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
