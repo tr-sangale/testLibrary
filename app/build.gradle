@@ -46,16 +46,6 @@ android {
     }
 }
 
-repositories {
-        maven {
-            name = "GithubPackages"
-            url = "https://maven.pkg.github.com/tr-sangale/firstAndroidLibrary"
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
 
 dependencies {
 
