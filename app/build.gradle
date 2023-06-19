@@ -46,7 +46,16 @@ android {
     }
 }
 
-
+repositories {
+        maven {
+            name = "GithubPackages"
+            url = "https://maven.pkg.github.com/tr-sangale/firstAndroidLibrary"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 
 dependencies {
 
@@ -67,7 +76,7 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
 
-    implementation 'com.example:firstlibrary:NEW-92-circleci-project-setup'
+    implementation "com.example:firstlibrary:${PACKAGE_VERSION}"
 
 
 }
