@@ -35,7 +35,7 @@ jobs:
       - run:
           name: settting up package version which needs to download
           command: |
-            PACKAGE_VERSION="NEW-${COMMIT_COUNT}-${CIRCLE_BRANCH}"
+            PACKAGE_VERSION="${COMMIT_COUNT}-${CIRCLE_BRANCH}"
             echo "pkg to be dfownloaded : ${PACKAGE_VERSION}"
             echo "export PACKAGE_VERSION=${PACKAGE_VERSION}" >> $BASH_ENV
       - run: 
